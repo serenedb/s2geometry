@@ -60,7 +60,7 @@ feature_summary(WHAT ALL)
 if (NOT TARGET absl::base)
     find_package(absl REQUIRED)
 endif()
-find_package(OpenSSL REQUIRED)
+# find_package(OpenSSL REQUIRED)
 # pthreads isn't used directly, but this is still required for std::thread.
 find_package(Threads REQUIRED)
 
