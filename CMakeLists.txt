@@ -65,7 +65,7 @@ endif()
 feature_summary(WHAT ALL)
 
 # Don't output anything for LOG(INFO).
-add_definitions(-DABSL_MIN_LOG_LEVEL=1)
+# add_definitions(-DABSL_MIN_LOG_LEVEL=1)
 
 # If we already have abseil we don't need to find it, for an example:
 # add_subdirectory(absl-submbodule)
