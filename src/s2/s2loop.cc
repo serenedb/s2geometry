@@ -154,6 +154,15 @@ S2Loop::S2Loop(Span<const S2Point> vertices, S2Debug override)
   Init(vertices);
 }
 
+S2Loop::S2Loop(int num_vertices, unique_ptr<S2Point[]> vertices,
+               S2Debug override)
+  : s2debug_override_(override) {
+  ClearIndex();
+  num_vertices_ = num_vertices;
+  vertices_ = std::move(vertices);
+  InitOriginAndBound();
+}
+
 void S2Loop::set_s2debug_override(S2Debug override) {
   s2debug_override_ = override;
 }
