@@ -122,6 +122,8 @@ class S2Loop final : public S2Region {
   // The main reason to use this constructor is if you intend to call
   // IsValid() explicitly.  See set_s2debug_override() for details.
   S2Loop(absl::Span<const S2Point> vertices, S2Debug override);
+  S2Loop(int num_vertices, s2internal::UniqueS2PointArray vertices,
+         S2Debug override);
 
   // Initialize a loop with given vertices.  The last vertex is implicitly
   // connected to the first.  All points should be unit length.  Loops must
