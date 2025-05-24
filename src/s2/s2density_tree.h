@@ -272,11 +272,11 @@ class S2DensityTree {
   // weight is scaled by (its parent's weight / the sum of weights of the node
   // and its siblings). This makes the weight of a parent equal to the sum of
   // its children.
-  S2DensityTree Normalize(absl::Nonnull<S2Error*> error) const;
+  S2DensityTree Normalize(S2Error* absl_nonnull error) const;
 
   // Returns an S2CellUnion containing the leaves of this tree.  The cell union
   // is not necessarily normalized.
-  S2CellUnion Leaves(absl::Nonnull<S2Error*> error) const;
+  S2CellUnion Leaves(S2Error* absl_nonnull error) const;
 
   // The decoded weight and offsets of encoded cells.
   class Cell {
