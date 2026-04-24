@@ -121,9 +121,10 @@ std::optional<Bignum> Bignum::FromString(absl::string_view s) {
     size_t chunk_len =
         std::min(static_cast<size_t>(end - begin), kMaxChunkDigits);
     Bigit chunk = 0;
-    auto result = std::from_chars(begin, begin + chunk_len, chunk);
+    auto result = std::from_chars(std::to_address(begin),
+                                  std::to_address(begin) + chunk_len, chunk);
     if (result.ec != std::errc() ||
-        static_cast<size_t>(result.ptr - begin) != chunk_len) {
+        static_cast<size_t>(result.ptr - std::to_address(begin)) != chunk_len) {
       return std::nullopt;
     }
     begin += chunk_len;
