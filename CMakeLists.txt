@@ -21,16 +21,6 @@ if (APPLE)
     set(CMAKE_MACOSX_RPATH TRUE)
 endif()
 
-# s2geometry needs to use the same C++ standard that absl used to avoid
-# undefined symbol errors since ABSL_HAVE_STD_STRING_VIEW etc will
-# end up defined differently.  There is probably a better way to achieve
-# this than assuming what absl used.  We require at least C++17.
-# Using CACHE allows the user to override the default.
-set(CMAKE_CXX_STANDARD 17 CACHE STRING "The C++ standard to build with")
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# No compiler-specific extensions, i.e. -std=c++17, not -std=gnu++17.
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 option(BUILD_SHARED_LIBS "Build shared libraries instead of static." ON)
 add_feature_info(SHARED_LIBS BUILD_SHARED_LIBS
                  "builds shared libraries instead of static.")
