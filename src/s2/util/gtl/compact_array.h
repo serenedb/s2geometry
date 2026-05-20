@@ -390,7 +390,11 @@ class compact_array_base {
     if (n <= old_capacity) return;
     size_type new_n = n;
     if (new_n > kInlined) {
+#if !defined(__APPLE__)
+      // macOS: very large static links can place _nallocx (e.g. jemalloc) >128MB from
+      // callers in __TEXT; arm64 B/BL then fails (ld arm64_b26 / lld BRANCH26).
       new_n = nallocx(n * sizeof(T), 0) / sizeof(T);
+#endif
     }
     set_capacity(new_n);
     if (MayBeInlined()) {
